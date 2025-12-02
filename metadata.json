@@ -1,0 +1,5 @@
+{
+  "name": "VisionPilot",
+  "description": "A modern, interactive showcase for the VisionPilot autonomous driving simulation and perception system.",
+  "requestFramePermissions": []
+}
