@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Github, FileText, User, ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { trackEvent } from '../src/utils/analytics';
 
 const About: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -49,6 +50,7 @@ const About: React.FC = () => {
                   <p className="text-slate-500 text-sm mb-3">Track the entire development process, challenges, and solutions.</p>
                   <a href="https://drive.google.com/file/d/15garXT9LaYUK_GlcT68EEbLpoLRc_XoL/view?usp=share_link" 
                      target="_blank" rel="noreferrer"
+                     onClick={() => trackEvent('click', 'About', 'View Journal on Google Drive')}
                      className="inline-flex items-center text-brand-dark hover:text-brand-accent transition-colors underline decoration-brand-accent/50 underline-offset-4 font-medium">
                       <FileText className="w-4 h-4 mr-2" />
                       View Journal on Google Drive

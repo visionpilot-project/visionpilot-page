@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Eye, Cpu, Navigation, Activity, Radio, Layers } from 'lucide-react';
+import { Eye, Cpu, Navigation, Activity, Radio, Layers, ArrowRight } from 'lucide-react';
+import { trackEvent } from '../src/utils/analytics';
 
 const Overview: React.FC = () => {
   const features = [
@@ -110,6 +112,26 @@ const Overview: React.FC = () => {
               </div>
            </div>
         </motion.div>
+
+        <div className="mt-16 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="inline-block"
+          >
+            <Link
+              to="/technical"
+              onClick={() => trackEvent('click', 'Overview', 'Deep Dive into Architecture')}
+              className="group inline-flex items-center px-8 py-4 rounded-full bg-brand-dark text-white font-bold hover:bg-brand-accent transition-all shadow-lg hover:shadow-brand-accent/20"
+            >
+              Deep Dive into Architecture 
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+
+        </div>
       </div>
     </div>
   );

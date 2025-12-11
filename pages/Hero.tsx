@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Github, Zap, Radio, Scan, Activity, ChevronDown, Layers, Cpu, Eye, Navigation, Target, Crosshair } from 'lucide-react';
+import { trackEvent } from '../src/utils/analytics';
 
 const Hero: React.FC = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -227,7 +228,10 @@ const Hero: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
-              onClick={scrollToContent}
+              onClick={() => {
+                scrollToContent();
+                trackEvent('click', 'Hero', 'Explore System');
+              }}
               className="group flex items-center justify-center px-8 py-4 rounded-full bg-brand-accent text-white font-bold text-lg hover:bg-teal-500 transition-colors shadow-lg hover:shadow-xl"
             >
               Explore System
@@ -237,6 +241,7 @@ const Hero: React.FC = () => {
               href="https://github.com/Julian1777/self-driving-project"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('click', 'Hero', 'Codebase')}
               className="flex items-center justify-center px-8 py-4 rounded-full bg-white border border-slate-200 text-slate-700 font-semibold text-lg hover:bg-slate-50 hover:border-slate-300 transition-all hover:-translate-y-1 hover:shadow-sm"
             >
               <Github className="mr-2 h-5 w-5" />
@@ -390,6 +395,7 @@ const Hero: React.FC = () => {
 
             <Link
               to="/technical"
+              onClick={() => trackEvent('click', 'Hero', 'Deep Dive into Architecture')}
               className="group inline-flex items-center px-8 py-4 rounded-full bg-brand-dark text-white font-bold hover:bg-brand-accent transition-all shadow-lg hover:shadow-brand-accent/20"
             >
               Deep Dive into Architecture 
@@ -600,6 +606,7 @@ const Hero: React.FC = () => {
                       <div className="flex flex-col sm:flex-row gap-4">
                         <Link
                           to="/demos"
+                          onClick={() => trackEvent('click', 'Hero', 'Watch Simulation Demos')}
                           className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-dark text-white font-bold hover:bg-brand-accent transition-all shadow-lg hover:shadow-brand-accent/20"
                         >
                           Watch Simulation Demos <Zap className="ml-2 w-4 h-4" />

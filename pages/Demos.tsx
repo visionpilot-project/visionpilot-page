@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
+import { trackEvent } from '../src/utils/analytics';
 
 const Demos: React.FC = () => {
+  const [playing, setPlaying] = useState<{ [key: number]: boolean }>({});
+
+  useEffect(() => {
+    trackEvent('view', 'Page', 'Demos');
+  }, []);
+
+  const handlePlay = (index: number, title: string) => {
+    trackEvent('click', 'Demos', `Play Video: ${title}`);
+    setPlaying((prev) => ({ ...prev, [index]: true }));
+  };
+
   const demos = [
     {
       title: "Autonomous Lane Keeping v2",
@@ -54,13 +66,31 @@ const Demos: React.FC = () => {
             >
               <div className="relative aspect-video bg-slate-900 group-hover:opacity-100 transition-opacity">
                 {demo.youtubeId ? (
-                   <iframe 
+                  playing[index] ? (
+                    <iframe
                       className="w-full h-full"
-                      src={`https://www.youtube.com/embed/${demo.youtubeId}`} 
+                      src={`https://www.youtube.com/embed/${demo.youtubeId}?autoplay=1`}
                       title={demo.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                   ></iframe>
+                    ></iframe>
+                  ) : (
+                    <div 
+                      className="w-full h-full relative cursor-pointer group/video"
+                      onClick={() => handlePlay(index, demo.title)}
+                    >
+                      <img 
+                        src={`https://img.youtube.com/vi/${demo.youtubeId}/maxresdefault.jpg`} 
+                        alt={demo.title} 
+                        className="w-full h-full object-cover opacity-80 group-hover/video:opacity-100 transition-opacity" 
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="bg-white/20 backdrop-blur-sm p-5 rounded-full border border-white/30 group-hover/video:scale-110 group-hover/video:bg-brand-accent transition-all duration-300">
+                          <Play className="w-8 h-8 text-white fill-current ml-1" />
+                        </div>
+                      </div>
+                    </div>
+                  )
                 ) : (
                     <div className="w-full h-full relative">
                         <img src={demo.image} alt={demo.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />

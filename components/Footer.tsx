@@ -1,6 +1,7 @@
 import React from 'react';
 import { Github, Twitter, Linkedin, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { trackEvent } from '../src/utils/analytics';
 
 const Footer: React.FC = () => {
   return (
@@ -15,13 +16,19 @@ const Footer: React.FC = () => {
               An open-source autonomous driving platform bridging the gap between simulation and reality using BeamNG.tech.
             </p>
             <div className="flex space-x-4">
-              <a href="https://github.com/Julian1777/self-driving-project" className="text-slate-400 hover:text-brand-dark transition-colors">
+              <a href="https://github.com/Julian1777/self-driving-project" 
+                 onClick={() => trackEvent('click', 'Footer', 'GitHub')}
+                 className="text-slate-400 hover:text-brand-dark transition-colors">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors">
+              <a href="#" 
+                 onClick={() => trackEvent('click', 'Footer', 'Twitter')}
+                 className="text-slate-400 hover:text-blue-400 transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-slate-400 hover:text-blue-700 transition-colors">
+              <a href="#" 
+                 onClick={() => trackEvent('click', 'Footer', 'LinkedIn')}
+                 className="text-slate-400 hover:text-blue-700 transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
@@ -41,8 +48,12 @@ const Footer: React.FC = () => {
             <h3 className="font-bold text-brand-dark mb-4">Resources</h3>
             <ul className="space-y-2 text-sm text-slate-500">
               <li><a href="#" className="hover:text-brand-accent transition-colors">Documentation</a></li>
-              <li><a href="https://drive.google.com/file/d/15garXT9LaYUK_GlcT68EEbLpoLRc_XoL/view?usp=share_link" className="hover:text-brand-accent transition-colors">Engineering Journal</a></li>
-              <li><a href="https://github.com/Julian1777/self-driving-project" className="hover:text-brand-accent transition-colors">GitHub Repository</a></li>
+              <li><a href="https://drive.google.com/file/d/15garXT9LaYUK_GlcT68EEbLpoLRc_XoL/view?usp=share_link" 
+                     onClick={() => trackEvent('click', 'Footer', 'Engineering Journal')}
+                     className="hover:text-brand-accent transition-colors">Engineering Journal</a></li>
+              <li><a href="https://github.com/Julian1777/self-driving-project" 
+                     onClick={() => trackEvent('click', 'Footer', 'GitHub Repository')}
+                     className="hover:text-brand-accent transition-colors">GitHub Repository</a></li>
             </ul>
           </div>
 
@@ -50,7 +61,9 @@ const Footer: React.FC = () => {
             <h3 className="font-bold text-brand-dark mb-4">Contact</h3>
             <ul className="space-y-2 text-sm text-slate-500">
               <li><Link to="/contact" className="hover:text-brand-accent transition-colors">Get in Touch</Link></li>
-              <li><a href="mailto:contact@visionpilot.dev" className="hover:text-brand-accent transition-colors">contact@visionpilot.dev</a></li>
+              <li><a href="mailto:contact@visionpilot.dev" 
+                     onClick={() => trackEvent('click', 'Footer', 'Email')}
+                     className="hover:text-brand-accent transition-colors">contact@visionpilot.dev</a></li>
             </ul>
           </div>
         </div>

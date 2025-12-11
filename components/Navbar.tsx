@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { trackEvent } from '../src/utils/analytics';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,6 +62,7 @@ const Navbar: React.FC = () => {
               ))}
               <Link
                 to="/contact"
+                onClick={() => trackEvent('click', 'Navbar', 'Contact')}
                 className="ml-4 px-4 py-2 rounded-full bg-brand-dark text-white text-sm font-bold hover:bg-brand-accent transition-colors shadow-md hover:shadow-lg"
               >
                 Contact

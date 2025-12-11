@@ -1,5 +1,6 @@
 import React from 'react';
 import { Github, Mail } from 'lucide-react';
+import { trackEvent } from '../src/utils/analytics';
 
 const Contact: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const Contact: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <a href="https://github.com/Julian1777/self-driving-project" 
                target="_blank" rel="noreferrer"
+               onClick={() => trackEvent('click', 'Contact', 'View on GitHub')}
                className="w-full sm:w-auto px-8 py-4 bg-brand-dark text-white rounded-full font-bold hover:bg-slate-800 transition-all flex items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-1"
             >
                 <Github className="w-5 h-5 mr-3" />
@@ -20,6 +22,7 @@ const Contact: React.FC = () => {
             </a>
             
             <a href="mailto:contact@example.com" 
+               onClick={() => trackEvent('click', 'Contact', 'Contact Me')}
                className="w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 text-brand-dark rounded-full font-bold hover:bg-slate-50 transition-all flex items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-1"
             >
                 <Mail className="w-5 h-5 mr-3" />
