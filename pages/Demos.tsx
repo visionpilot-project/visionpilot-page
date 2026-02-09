@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Play } from 'lucide-react';
+import { Play, ExternalLink } from 'lucide-react';
 import { trackEvent } from '../src/utils/analytics';
 
 const Demos: React.FC = () => {
@@ -17,30 +17,51 @@ const Demos: React.FC = () => {
 
   const demos = [
     {
+      title: "Automatic Emergency Braking (AEB)",
+      description: "Real-time radar filtering and collision avoidance in emergency scenarios.",
+      youtubeId: "Z8Y2-MpmrRg",
+      image: `${import.meta.env.BASE_URL}aeb_gif.gif`,
+      isGif: true,
+      tags: ["AEB", "Safety", "Radar", "Control"]
+    },
+    {
+      title: "Sign Detection & Classification",
+      description: "Real-time traffic sign detection and classification using CNNs/YOLO.",
+      youtubeId: "ujGkQJ2BqV0",
+      image: `${import.meta.env.BASE_URL}sign_demo.gif`,
+      isGif: true,
+      tags: ["Classification", "YOLOv11", "CNN", "Perception"]
+    },
+    {
+      title: "Traffic Light Detection",
+      description: "Detecting state changes (Red/Yellow/Green) in dynamic environments.",
+      image: `${import.meta.env.BASE_URL}traffic_light_demo.gif`,
+      isGif: true,
+      tags: ["Classification", "Real-time"]
+    },
+    {
       title: "Autonomous Lane Keeping v2",
       description: "Fused CV & SCNN detection with tuned PID steering in BeamNG.tech.",
       youtubeId: "7eA_XfIkLWQ",
+      image: `${import.meta.env.BASE_URL}lane.gif`,
+      isGif: true,
       tags: ["Fusion", "PID", "ACC", "Lane Detection", "Control"]
     },
     {
       title: "Foxglove LiDAR Visualization",
       description: "Real-time point cloud streaming via WebSocket integration.",
       youtubeId: "4HJDvL2Q6AY",
+      image: `${import.meta.env.BASE_URL}foxglove.gif`,
+      isGif: true,
       tags: ["Visualization", "LiDAR", "WebSocket"]
     },
     {
-      title: "Traffic Sign & Vehicle Detection",
-      description: "Real-time recognition of road signs and traffic participants.",
-      image: `${import.meta.env.BASE_URL}sign_detection_demo.gif`, // Placeholder as actual GIF is local
+      title: "Semantic Segmentation",
+      description: "Real-time image segmentation using front and rear cameras.",
+      youtubeId: "4PAqcUKqn6c",
+      image: `${import.meta.env.BASE_URL}segmentation.gif`,
       isGif: true,
-      tags: ["YOLOv8", "CNN", "Perception"]
-    },
-    {
-      title: "Traffic Light Classification",
-      description: "Detecting state changes (Red/Yellow/Green) in dynamic environments.",
-      image: `${import.meta.env.BASE_URL}traffic_light_demo.gif`, // Placeholder
-      isGif: true,
-      tags: ["Classification", "Real-time"]
+      tags: ["Segmentation", "Vision", "Perception"]
     }
   ];
 
@@ -65,7 +86,16 @@ const Demos: React.FC = () => {
               className="bg-white rounded-xl overflow-hidden border border-slate-200 hover:border-brand-accent/50 hover:shadow-xl transition-shadow duration-300 group"
             >
               <div className="relative aspect-video bg-slate-900 group-hover:opacity-100 transition-opacity">
-                {demo.youtubeId ? (
+                {demo.isGif ? (
+                    <div className="w-full h-full relative">
+                        <img src={demo.image} alt={demo.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div className="bg-white/20 backdrop-blur p-4 rounded-full border border-white/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span className="text-xs font-bold uppercase tracking-wider text-white">GIF Preview</span>
+                            </div>
+                        </div>
+                    </div>
+                ) : demo.youtubeId ? (
                   playing[index] ? (
                     <iframe
                       className="w-full h-full"
@@ -91,16 +121,7 @@ const Demos: React.FC = () => {
                       </div>
                     </div>
                   )
-                ) : (
-                    <div className="w-full h-full relative">
-                        <img src={demo.image} alt={demo.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="bg-white/20 backdrop-blur p-4 rounded-full border border-white/30">
-                                <span className="text-xs font-bold uppercase tracking-wider text-white">GIF Demo</span>
-                            </div>
-                        </div>
-                    </div>
-                )}
+                ) : null}
               </div>
               <div className="p-6">
                 <div className="flex flex-wrap gap-2 mb-3">
@@ -111,7 +132,18 @@ const Demos: React.FC = () => {
                   ))}
                 </div>
                 <h3 className="text-xl font-bold text-brand-dark mb-2">{demo.title}</h3>
-                <p className="text-slate-600 text-sm">{demo.description}</p>
+                <p className="text-slate-600 text-sm mb-4">{demo.description}</p>
+                {demo.youtubeId && (
+                  <a 
+                    href={`https://www.youtube.com/watch?v=${demo.youtubeId}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm font-semibold text-brand-accent hover:text-brand-dark transition-colors"
+                  >
+                    Watch Full Video
+                    <ExternalLink className="w-4 h-4 ml-1" />
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}

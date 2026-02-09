@@ -66,6 +66,13 @@ const About: React.FC = () => {
                       <li>Foxglove Studio</li>
                   </ul>
               </div>
+
+              <div className="pt-6 border-t border-slate-100">
+                  <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Project History</h3>
+                  <a href="https://star-history.com/#visionpilot-project/VisionPilot&Date" target="_blank" rel="noopener noreferrer" className="block hover:opacity-90 transition-opacity">
+                    <img src="https://api.star-history.com/svg?repos=visionpilot-project/VisionPilot&type=Date" alt="Star History Chart" className="w-full h-auto rounded-lg border border-slate-100" />
+                  </a>
+              </div>
           </div>
         </div>
 

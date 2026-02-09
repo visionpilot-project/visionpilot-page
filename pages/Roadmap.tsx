@@ -8,20 +8,17 @@ const Roadmap: React.FC = () => {
     {
       category: "Perception",
       items: [
-        { text: "Sign Classification & Detection (CNN / YOLOv8)", status: "completed" },
-        { text: "Traffic Light Classification & Detection", status: "completed" },
+        { text: "Sign Classification & Detection (CNN / YOLOv11m)", status: "completed" },
+        { text: "Traffic Light Classification & Detection (CNN / YOLOv11m)", status: "completed" },
         { text: "Lane Detection Fusion (SCNN / CV)", status: "completed" },
         { text: "Advanced Lane Detection (OpenCV)", status: "completed" },
         { text: "Majority Voting System for CV", status: "completed" },
-        { text: "Camera Calibration", status: "completed" },
-        { text: "Blind Spot Monitoring", status: "planned" },
-        { text: "Real-Time Object Tracking", status: "planned" },
-        { text: "Improved Dashed Line Handling", status: "planned" },
-        { text: "Stop/Yield Sign Response Logic", status: "planned" },
-        { text: "Multi-Lane Detection", status: "planned" },
-        { text: "Lane Change Logic", status: "planned" },
-        { text: "Multi-Camera Setup", status: "low-priority" },
-        { text: "Overtaking & Merging Logic", status: "low-priority" }
+        { text: "Semantic Segmentation", status: "completed" },
+        { text: "Real-Time Object Detection (Vehicles, Pedestrians)", status: "completed" },
+        { text: "Speed Estimation (Camera + LiDAR)", status: "in-progress" },
+        { text: "Pedestrian Intent Prediction", status: "planned" },
+        { text: "Vehicle State Classification", status: "planned" },
+        { text: "LiDAR Object Detection 3D", status: "in-progress" }
       ]
     },
     {
@@ -29,12 +26,12 @@ const Roadmap: React.FC = () => {
       items: [
         { text: "Integrate Radar", status: "completed" },
         { text: "Integrate LiDAR", status: "completed" },
-        { text: "Multi-Radar Integration (Front + 2 Rear)", status: "planned" },
+        { text: "Kalman Filtering", status: "in-progress" },
+        { text: "GPS Integration", status: "planned" },
+        { text: "IMU Integration", status: "planned" },
         { text: "Ultrasonic Sensor Integration", status: "planned" },
-        { text: "LiDAR Object Detection", status: "in-progress" },
         { text: "Map Matching Algorithm", status: "planned" },
-        { text: "GPS/IMU Sensor Integration", status: "in-progress" },
-        { text: "SLAM (Simultaneous Localization & Mapping)", status: "low-priority" }
+        { text: "SLAM (Localization & Mapping)", status: "low-priority" }
       ]
     },
     {
@@ -43,12 +40,12 @@ const Roadmap: React.FC = () => {
         { text: "Vehicle Control (Throttle, Steer, Brake)", status: "completed" },
         { text: "PIDF Controller Integration", status: "completed" },
         { text: "Adaptive Cruise Control", status: "completed" },
-        { text: "Emergency Braking / Collision Avoidance", status: "in-progress" },
-        { text: "Blindspot Monitoring (ADAS Module)", status: "planned" },
-        { text: "Path Planning", status: "planned" },
-        { text: "Behavior Planning & Anticipation", status: "low-priority" },
-        { text: "End-to-End Policy Learning (RL)", status: "low-priority" },
-        { text: "Traffic Participant Prediction", status: "low-priority" }
+        { text: "Automatic Emergency Braking (AEB)", status: "completed" },
+        { text: "Trajectory Prediction", status: "planned" },
+        { text: "Blindspot Monitoring", status: "planned" },
+        { text: "Traffic Rule Enforcement", status: "planned" },
+        { text: "Global/Local Path Planning", status: "planned" },
+        { text: "Lane Change & Parking Logic", status: "planned" }
       ]
     },
     {
@@ -57,10 +54,9 @@ const Roadmap: React.FC = () => {
         { text: "BeamNG.tech Integration", status: "completed" },
         { text: "Pipeline Modularization", status: "completed" },
         { text: "Lane Detection Tuning", status: "completed" },
-        { text: "Traffic Scenarios (Heavy/Moderate/Light)", status: "planned" },
-        { text: "Lighting Condition Testing", status: "planned" },
-        { text: "RC Car Implementation", status: "low-priority" },
-        { text: "Docker Containerization", status: "low-priority" }
+        { text: "Fog/Weather Conditions", status: "planned" },
+        { text: "Traffic Scenarios", status: "planned" },
+        { text: "Lighting Condition Testing", status: "planned" }
       ]
     },
     {
@@ -68,16 +64,16 @@ const Roadmap: React.FC = () => {
       items: [
         { text: "Foxglove Visualization Integration", status: "completed" },
         { text: "Modular YAML Configuration", status: "completed" },
-        { text: "Real-time Telemetry Logging", status: "completed" },
-        { text: "Real-time Annotations Overlay", status: "in-progress" }
+        { text: "Real-time Drive Logging", status: "completed" },
+        { text: "Real-time Annotations Overlay", status: "planned" }
       ]
     },
     {
-      category: "Documentation",
+      category: "Deployment",
       items: [
-        { text: "Demo Images & Videos", status: "completed" },
-        { text: "Table of Contents", status: "completed" },
-        { text: "Performance Benchmarks Section", status: "planned" }
+        { text: "Containerize Models (Docker)", status: "planned" },
+        { text: "Message Broker Integration", status: "planned" },
+        { text: "Inference Aggregator Service", status: "planned" }
       ]
     }
   ];

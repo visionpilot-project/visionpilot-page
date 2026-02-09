@@ -24,7 +24,7 @@ const Overview: React.FC = () => {
     {
       icon: <Navigation className="w-8 h-8 text-orange-500" />,
       title: "Autonomous Control",
-      description: "Real-time PID controllers managing steering, throttle, and braking with Adaptive Cruise Control (ACC)."
+      description: "Real-time PID controllers managing steering, throttle, and braking with ACC and AEB."
     },
     {
       icon: <Activity className="w-8 h-8 text-red-500" />,

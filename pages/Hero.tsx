@@ -217,13 +217,13 @@ const Hero: React.FC = () => {
           className="relative z-30 max-w-4xl mx-auto"
         >
 
-          <h1 className="text-6xl md:text-8xl font-display font-bold tracking-tight text-brand-dark mb-6 drop-shadow-sm">
-            VisionPilot
+          <h1 className="text-4xl md:text-6xl font-display font-bold tracking-tight text-brand-dark mb-6 drop-shadow-sm">
+            VisionPilot: Autonomous Driving & Perception
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-600 leading-relaxed mb-10 max-w-2xl mx-auto font-light">
-            Autonomous Driving Simulation & <br/>
-            <span className="text-brand-accent font-normal">Real-Time Perception</span>
+            An open-source modular platform for <br/>
+            <span className="text-brand-accent font-normal">Simulated Autonomous Vehicle Research</span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
