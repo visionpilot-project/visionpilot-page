@@ -15,8 +15,6 @@ const Models: React.FC = () => {
   const models = [
     { name: "YOLOP", type: "Lane Detection & Segmentation", framework: "Ultralytics/PyTorch", status: "Production" },
     { name: "YOLOv11x", type: "Object Detection", framework: "Ultralytics", status: "Production" },
-    { name: "YOLOv11x", type: "Sign Detection", framework: "Ultralytics", status: "Production" },
-    { name: "YOLOv11x", type: "Traffic Light Detection", framework: "Ultralytics", status: "Production" },
     { name: "Custom CNN", type: "Sign Classification", framework: "PyTorch", status: "Production" },
     { name: "Traditional CV", type: "Lane Detection (Fallback)", framework: "OpenCV", status: "Production" },
   ];
