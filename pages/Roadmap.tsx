@@ -8,17 +8,21 @@ const Roadmap: React.FC = () => {
     {
       category: "Perception",
       items: [
-        { text: "Sign Classification & Detection (CNN / YOLOv11m)", status: "completed" },
-        { text: "Traffic Light Classification & Detection (CNN / YOLOv11m)", status: "completed" },
-        { text: "Lane Detection Fusion (SCNN / CV)", status: "completed" },
-        { text: "Advanced Lane Detection (OpenCV)", status: "completed" },
+        { text: "Multi-Lane Detection (YOLOP + CV Fusion)", status: "completed" },
+        { text: "Sign Detection & Classification (YOLOv11)", status: "completed" },
+        { text: "Traffic Light Detection & Classification (YOLOv11)", status: "completed" },
+        { text: "Lane Detection Fusion (YOLOP + Traditional CV)", status: "completed" },
         { text: "Majority Voting System for CV", status: "completed" },
-        { text: "Semantic Segmentation", status: "completed" },
         { text: "Real-Time Object Detection (Vehicles, Pedestrians)", status: "completed" },
+        { text: "Semantic Segmentation", status: "completed" },
+        { text: "Lighting Condition Detection", status: "completed" },
+        { text: "Handle Dashed Lines in Lane Detection", status: "completed" },
         { text: "Speed Estimation (Camera + LiDAR)", status: "in-progress" },
-        { text: "Pedestrian Intent Prediction", status: "planned" },
-        { text: "Vehicle State Classification", status: "planned" },
-        { text: "LiDAR Object Detection 3D", status: "in-progress" }
+        { text: "Multiple Object Tracking (MOT)", status: "planned" },
+        { text: "Road Marking Detection", status: "planned" },
+        { text: "LiDAR 3D Object Detection", status: "planned" },
+        { text: "Ocluded Object Detection (Radar/LiDAR)", status: "low-priority" },
+        { text: "Multi-Camera Setup", status: "low-priority" }
       ]
     },
     {
@@ -26,54 +30,53 @@ const Roadmap: React.FC = () => {
       items: [
         { text: "Integrate Radar", status: "completed" },
         { text: "Integrate LiDAR", status: "completed" },
-        { text: "Kalman Filtering", status: "in-progress" },
-        { text: "GPS Integration", status: "planned" },
-        { text: "IMU Integration", status: "planned" },
+        { text: "Integrate GPS", status: "planned" },
+        { text: "Integrate IMU", status: "planned" },
+        { text: "Extended Kalman Filtering", status: "planned" },
         { text: "Ultrasonic Sensor Integration", status: "planned" },
-        { text: "Map Matching Algorithm", status: "planned" },
         { text: "SLAM (Localization & Mapping)", status: "low-priority" }
       ]
     },
     {
       category: "Control & Planning",
       items: [
-        { text: "Vehicle Control (Throttle, Steer, Brake)", status: "completed" },
+        { text: "Vehicle Control (Throttle, Steering, Braking)", status: "completed" },
         { text: "PIDF Controller Integration", status: "completed" },
-        { text: "Adaptive Cruise Control", status: "completed" },
+        { text: "Adaptive Cruise Control (ACC)", status: "completed" },
         { text: "Automatic Emergency Braking (AEB)", status: "completed" },
+        { text: "Model Predictive Control (MPC) Integration", status: "completed" },
+        { text: "Blind Spot Monitoring (Radar)", status: "completed" },
+        { text: "Obstacle Avoidance via MPC", status: "planned" },
+        { text: "Curve Speed Optimization", status: "planned" },
         { text: "Trajectory Prediction", status: "planned" },
-        { text: "Blindspot Monitoring", status: "planned" },
         { text: "Traffic Rule Enforcement", status: "planned" },
-        { text: "Global/Local Path Planning", status: "planned" },
-        { text: "Lane Change & Parking Logic", status: "planned" }
-      ]
-    },
-    {
-      category: "Simulation & Scenarios",
-      items: [
-        { text: "BeamNG.tech Integration", status: "completed" },
-        { text: "Pipeline Modularization", status: "completed" },
-        { text: "Lane Detection Tuning", status: "completed" },
-        { text: "Fog/Weather Conditions", status: "planned" },
-        { text: "Traffic Scenarios", status: "planned" },
-        { text: "Lighting Condition Testing", status: "planned" }
+        { text: "Dynamic Speed Limits (Sign-based)", status: "planned" },
+        { text: "Global Path Planning", status: "planned" },
+        { text: "Local Path Planning", status: "planned" },
+        { text: "Lane Change Logic (MPC)", status: "planned" },
+        { text: "Parking Logic", status: "planned" }
       ]
     },
     {
       category: "Visualization & Logging",
       items: [
-        { text: "Foxglove Visualization Integration", status: "completed" },
+        { text: "Foxglove Integration", status: "completed" },
         { text: "Modular YAML Configuration", status: "completed" },
-        { text: "Real-time Drive Logging", status: "completed" },
-        { text: "Real-time Annotations Overlay", status: "planned" }
+        { text: "Real-Time Drive Logging", status: "completed" },
+        { text: "Real-Time Annotations Overlay", status: "planned" },
+        { text: "Predicted Trajectory Visualization", status: "planned" },
+        { text: "Bird's Eye View (BEV)", status: "planned" },
+        { text: "Live Map Visualization", status: "low-priority" }
       ]
     },
     {
-      category: "Deployment",
+      category: "Deployment & Infrastructure",
       items: [
-        { text: "Containerize Models (Docker)", status: "planned" },
-        { text: "Message Broker Integration", status: "planned" },
-        { text: "Inference Aggregator Service", status: "planned" }
+        { text: "Containerize Models (Docker)", status: "completed" },
+        { text: "Microservices Architecture", status: "completed" },
+        { text: "Message Broker (Redis)", status: "completed" },
+        { text: "Docker Compose Orchestration", status: "completed" },
+        { text: "Aggregator Service", status: "completed" }
       ]
     }
   ];

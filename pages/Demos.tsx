@@ -17,39 +17,63 @@ const Demos: React.FC = () => {
 
   const demos = [
     {
+      title: "Multi-Lane Detection",
+      description: "Evaluation of multi-lane perception pipeline across environmental edge cases including high-glare transitions, low-light tunnels, and heavy atmospheric fog.",
+      youtubeId: "IvmJ01pYCSE",
+      image: `${import.meta.env.BASE_URL}multi-lane.gif`,
+      isGif: true,
+      tags: ["Lane Detection", "CV", "YOLOP", "Perception"]
+    },
+    {
       title: "Automatic Emergency Braking (AEB)",
-      description: "Real-time radar filtering and collision avoidance in emergency scenarios.",
+      description: "Real-time radar filtering and collision avoidance with emergency braking in critical scenarios.",
       youtubeId: "Z8Y2-MpmrRg",
       image: `${import.meta.env.BASE_URL}aeb_gif.gif`,
       isGif: true,
-      tags: ["AEB", "Safety", "Radar", "Control"]
+      tags: ["AEB", "Safety", "Radar", "MPC"]
+    },
+    {
+      title: "Blind Spot Detection (BSD)",
+      description: "Blind spot detection system using radar data to identify vehicles in the blind spot regions.",
+      youtubeId: "Z8Y2-MpmrRg",
+      image: `${import.meta.env.BASE_URL}bsd_demo.gif`,
+      isGif: true,
+      tags: ["Radar", "Safety", "Detection"]
     },
     {
       title: "Sign Detection & Classification",
-      description: "Real-time traffic sign detection and classification using CNNs/YOLO.",
+      description: "Real-time traffic sign detection and classification using YOLOv11 and CNNs.",
       youtubeId: "ujGkQJ2BqV0",
       image: `${import.meta.env.BASE_URL}sign_demo.gif`,
       isGif: true,
-      tags: ["Classification", "YOLOv11", "CNN", "Perception"]
+      tags: ["YOLOv11", "CNN", "Perception"]
     },
     {
-      title: "Traffic Light Detection",
-      description: "Detecting state changes (Red/Yellow/Green) in dynamic environments.",
+      title: "Traffic Light Detection & Classification",
+      description: "Real-time traffic light detection and state classification (Red/Yellow/Green) in dynamic environments.",
       image: `${import.meta.env.BASE_URL}traffic_light_demo.gif`,
       isGif: true,
-      tags: ["Classification", "Real-time"]
+      tags: ["YOLOv11", "Classification", "Perception"]
     },
     {
       title: "Autonomous Lane Keeping v2",
-      description: "Fused CV & SCNN detection with tuned PID steering in BeamNG.tech.",
+      description: "Fused CV + YOLOP lane detection with MPC-based steering control for smooth, predictive autonomous driving.",
       youtubeId: "7eA_XfIkLWQ",
       image: `${import.meta.env.BASE_URL}lane.gif`,
       isGif: true,
-      tags: ["Fusion", "PID", "ACC", "Lane Detection", "Control"]
+      tags: ["Fusion", "MPC", "Lane Detection", "Control"]
+    },
+    {
+      title: "YOLOP Lane Detection",
+      description: "YOLOP model demonstrating unified lane detection, drivable area segmentation, and object detection.",
+      youtubeId: "CZC2ajqDkuU",
+      image: `${import.meta.env.BASE_URL}yolop.gif`,
+      isGif: true,
+      tags: ["YOLOP", "Segmentation", "Lane Detection"]
     },
     {
       title: "Foxglove LiDAR Visualization",
-      description: "Real-time point cloud streaming via WebSocket integration.",
+      description: "Real-time LiDAR point cloud streaming and autonomous vehicle telemetry in Foxglove Studio.",
       youtubeId: "4HJDvL2Q6AY",
       image: `${import.meta.env.BASE_URL}foxglove.gif`,
       isGif: true,
@@ -57,7 +81,7 @@ const Demos: React.FC = () => {
     },
     {
       title: "Semantic Segmentation",
-      description: "Real-time image segmentation using front and rear cameras.",
+      description: "Real-time image segmentation using front and rear cameras for drivable area and obstacle mapping.",
       youtubeId: "4PAqcUKqn6c",
       image: `${import.meta.env.BASE_URL}segmentation.gif`,
       isGif: true,

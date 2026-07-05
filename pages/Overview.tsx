@@ -8,33 +8,33 @@ const Overview: React.FC = () => {
   const features = [
     {
       icon: <Eye className="w-8 h-8 text-brand-accent" />,
-      title: "Lane Detection",
-      description: "Hybrid approach using Spatial CNN (SCNN) and traditional Computer Vision for robust lane keeping in highway scenarios."
+      title: "Multi-Lane Detection",
+      description: "Hybrid approach using YOLOP segmentation and traditional Computer Vision for robust multi-lane detection across edge cases."
     },
     {
       icon: <Layers className="w-8 h-8 text-brand-blue" />,
       title: "Object Detection",
-      description: "YOLOv8 & CNN powered detection and classification for vehicles, pedestrians, traffic lights, and road signs."
+      description: "YOLOv11 powered detection and classification for vehicles, pedestrians, traffic lights, and road signs in real-time."
     },
     {
       icon: <Radio className="w-8 h-8 text-green-500" />,
-      title: "Sensor Fusion",
-      description: "Integration of Camera, LiDAR, and Radar data to create a comprehensive understanding of the environment."
+      title: "Multi-Sensor Fusion",
+      description: "Integration of Camera, LiDAR, Radar, GPS, and IMU data for comprehensive environmental perception."
     },
     {
       icon: <Navigation className="w-8 h-8 text-orange-500" />,
-      title: "Autonomous Control",
-      description: "Real-time PID controllers managing steering, throttle, and braking with ACC and AEB."
+      title: "MPC Control",
+      description: "Model Predictive Control with integrated steering and throttle optimization, plus Automatic Emergency Braking (AEB)."
     },
     {
       icon: <Activity className="w-8 h-8 text-red-500" />,
       title: "Live Telemetry",
-      description: "Real-time visualization and monitoring via Foxglove Studio WebSocket integration."
+      description: "Real-time visualization and monitoring via Foxglove Studio WebSocket integration with LiDAR point clouds."
     },
     {
       icon: <Cpu className="w-8 h-8 text-indigo-500" />,
       title: "BeamNG Integration",
-      description: "High-fidelity physics simulation using BeamNG.tech as the testing ground for autonomous algorithms."
+      description: "High-fidelity physics simulation using BeamNG.tech for realistic sensor noise, vehicle dynamics, and traffic scenarios."
     }
   ];
 
@@ -89,14 +89,14 @@ const Overview: React.FC = () => {
            
            <div className="grid md:grid-cols-2 gap-0">
               <div className="p-10 md:p-16 flex flex-col justify-center">
-                  <h3 className="text-3xl font-bold text-white mb-4">Powered by BeamNG.tech</h3>
+              <h3 className="text-3xl font-bold text-white mb-4">Powered by Advanced Control & Perception</h3>
                   <p className="text-slate-300 mb-6">
-                      Leveraging the soft-body physics engine of BeamNG.tech allows for realistic sensor noise, vehicle dynamics, and complex traffic scenarios that traditional rigid-body simulators cannot match.
+                      VisionPilot leverages the soft-body physics engine of BeamNG.tech combined with state-of-the-art deep learning models (YOLOP, YOLOv11) and sophisticated Model Predictive Control for autonomous decision-making.
                   </p>
                   <ul className="space-y-2 text-slate-300">
-                      <li className="flex items-center"><span className="w-2 h-2 bg-brand-accent rounded-full mr-3"></span>Real-time Lidar Point Clouds</li>
-                      <li className="flex items-center"><span className="w-2 h-2 bg-brand-accent rounded-full mr-3"></span>Accurate Camera Intrinsics</li>
-                      <li className="flex items-center"><span className="w-2 h-2 bg-brand-accent rounded-full mr-3"></span>Dynamic Traffic Generation</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-brand-accent rounded-full mr-3"></span>Multi-Sensor Perception (Camera, LiDAR, Radar)</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-brand-accent rounded-full mr-3"></span>Model Predictive Control with Safety Layer</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-brand-accent rounded-full mr-3"></span>Real-time Sensor Fusion & Tracking</li>
                   </ul>
               </div>
               <div className="relative h-64 md:h-auto overflow-hidden">

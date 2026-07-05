@@ -8,62 +8,62 @@ const Technical: React.FC = () => {
       id: "simulation",
       title: "Simulation Layer",
       icon: <Car className="w-6 h-6" />,
-      details: ["BeamNG.tech Physics", "Traffic Generation", "Sensor Simulation (LiDAR/Cam/Radar)"],
+      details: ["BeamNG.tech Physics", "Multi-sensor Suite", "Realistic Vehicle Dynamics"],
       color: "border-blue-200 text-blue-600 bg-blue-50"
     },
     {
       id: "perception",
       title: "Perception Pipeline",
-      icon: <EyeIcon />,
-      details: ["SCNN & Traditional CV (Lanes)", "YOLOv8 (Objects)", "CNN (Signs)"],
+      icon: <Eye className="w-6 h-6" />,
+      details: ["YOLOP (Lanes & Drivable Area)", "YOLOv11 (Objects & Signs)", "Traditional CV (Lane Detection)"],
       color: "border-purple-200 text-purple-600 bg-purple-50"
     },
     {
       id: "fusion",
       title: "Sensor Fusion",
       icon: <Database className="w-6 h-6" />,
-      details: ["Kalman Filters", "Object Tracking", "State Estimation"],
+      details: ["Multi-Sensor Integration", "Object Tracking & Fusion", "Real-time State Estimation"],
       color: "border-green-200 text-green-600 bg-green-50"
     },
     {
       id: "control",
-      title: "Control System",
+      title: "Planning & Control",
       icon: <Cpu className="w-6 h-6" />,
-      details: ["PID Controllers", "Path Planning", "Actuator Commands"],
+      details: ["Model Predictive Control (MPC)", "Trajectory Optimization", "Automatic Emergency Braking (AEB)"],
       color: "border-orange-200 text-orange-600 bg-orange-50"
     }
   ];
 
   const sensors = [
     {
-      name: "Main Camera",
+      name: "Front Camera",
       icon: <Eye className="w-6 h-6 text-blue-500" />,
-      specs: ["1080p Resolution", "60 FPS", "120° FOV", "HDR Enabled"],
-      desc: "Primary input for lane detection and object classification."
+      specs: ["1920x1080", "50Hz", "70° FOV", "Depth Enabled"],
+      desc: "Primary input for lane detection, traffic signs, lights, and object detection."
     },
     {
-      name: "LiDAR Array",
+      name: "LiDAR",
       icon: <Wifi className="w-6 h-6 text-red-500" />,
-      specs: ["100m+ Range", "360° Horizontal", "32 Channels", "10Hz Update"],
-      desc: "Velodyne-style simulation for precise depth and obstacle mapping."
+      specs: ["80 Vertical Lines", "360° Horizontal", "120m Range", "20Hz Update"],
+      desc: "Obstacle detection and 3D scene understanding with point cloud data."
     },
     {
-      name: "Dual GPS",
-      icon: <MapPin className="w-6 h-6 text-green-500" />,
-      specs: ["RTK Precision", "Dual Antenna", "2cm Accuracy", "Multi-Band"],
-      desc: "Global localization for path planning and map matching."
-    },
-    {
-      name: "IMU",
-      icon: <Compass className="w-6 h-6 text-orange-500" />,
-      specs: ["9-Axis", "1kHz Rate", "Accelerometer", "Gyroscope"],
-      desc: "Inertial measurement for dead reckoning and state estimation."
-    },
-    {
-      name: "Tri-Radar System",
+      name: "Front Radar",
       icon: <Radio className="w-6 h-6 text-purple-500" />,
-      specs: ["1 Front / 2 Rear", "150m Range", "Blind Spot Monitor", "Doppler Velocity"],
-      desc: "Long-range front radar with dual rear corner radars for blind spot monitoring."
+      specs: ["200m Range", "128×64 Bins", "50Hz Update", "Collision Detection"],
+      desc: "Adaptive cruise control and time-to-collision (TTC) monitoring for safety."
+    },
+    {
+      name: "Rear Radars",
+      icon: <Radio className="w-6 h-6 text-purple-500" />,
+      specs: ["30m Range", "Left & Right", "64×32 Bins", "50Hz Update"],
+      desc: "Blind spot monitoring and rear object detection."
+    },
+    {
+      name: "Dual GPS + IMU",
+      icon: <MapPin className="w-6 h-6 text-green-500" />,
+      specs: ["50Hz Position", "100Hz IMU", "9-Axis Inertial", "Localization"],
+      desc: "Precise localization and vehicle dynamics estimation for planning."
     }
   ];
 
@@ -141,14 +141,14 @@ const Technical: React.FC = () => {
 
              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                 <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
-                    <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Total Latency</div>
-                    <div className="text-4xl font-display font-bold text-brand-dark mb-2">~45<span className="text-lg text-slate-500">ms</span></div>
-                    <p className="text-xs text-slate-500">End-to-end (Sensor to Actuation)</p>
+                    <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">MPC Latency</div>
+                    <div className="text-4xl font-display font-bold text-brand-dark mb-2">~20<span className="text-lg text-slate-500">ms</span></div>
+                    <p className="text-xs text-slate-500">Model Predictive Control Compute</p>
                 </div>
                  <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
-                    <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Control Frequency</div>
+                    <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Control Method</div>
                     <div className="text-4xl font-display font-bold text-brand-accent mb-2">60<span className="text-lg text-slate-500">Hz</span></div>
-                    <p className="text-xs text-slate-500">PID Loop Update Rate</p>
+                    <p className="text-xs text-slate-500">MPC Loop Update Rate</p>
                 </div>
                  <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
                     <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">GPU Utilization</div>

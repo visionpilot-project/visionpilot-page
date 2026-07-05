@@ -4,20 +4,21 @@ import { motion } from 'framer-motion';
 
 const Models: React.FC = () => {
   const datasetData = [
-    { name: 'Mapillary', size: 65, color: '#2dd4bf' },
-    { name: 'BDD100K', size: 90, color: '#3b82f6' },
-    { name: 'TUSimple', size: 55, color: '#fb923c' },
-    { name: 'Euro Signs', size: 45, color: '#f472b6' },
-    { name: 'DFG Signs', size: 40, color: '#a855f7' },
-    { name: 'GTSRB', size: 35, color: '#ec4899' },
+    { name: 'BDD100K', size: 100, color: '#3b82f6' },
+    { name: 'Mapillary', size: 75, color: '#2dd4bf' },
+    { name: 'TUSimple', size: 60, color: '#fb923c' },
+    { name: 'GTSRB', size: 50, color: '#ec4899' },
+    { name: 'Euro Traffic Signs', size: 45, color: '#f472b6' },
+    { name: 'Custom Datasets', size: 40, color: '#a855f7' },
   ];
 
   const models = [
-    { name: "SCNN", type: "Lane Detection", framework: "PyTorch", status: "Production" },
-    { name: "YOLOv8x", type: "Object Detection", framework: "Ultralytics", status: "Production" },
-    { name: "YOLOv8x", type: "Sign Detection", framework: "Ultralytics", status: "Production" },
-    { name: "Custom CNN", type: "Sign Classification", framework: "Keras/TF", status: "Optimization" },
-    { name: "YOLOv8x", type: "Traffic Light Det. & Class.", framework: "Ultralytics", status: "Production" },
+    { name: "YOLOP", type: "Lane Detection & Segmentation", framework: "Ultralytics/PyTorch", status: "Production" },
+    { name: "YOLOv11x", type: "Object Detection", framework: "Ultralytics", status: "Production" },
+    { name: "YOLOv11x", type: "Sign Detection", framework: "Ultralytics", status: "Production" },
+    { name: "YOLOv11x", type: "Traffic Light Detection", framework: "Ultralytics", status: "Production" },
+    { name: "Custom CNN", type: "Sign Classification", framework: "PyTorch", status: "Production" },
+    { name: "Traditional CV", type: "Lane Detection (Fallback)", framework: "OpenCV", status: "Production" },
   ];
 
   return (

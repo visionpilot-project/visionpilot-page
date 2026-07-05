@@ -28,33 +28,33 @@ const Hero: React.FC = () => {
   const features = [
     {
       icon: <Eye className="w-6 h-6 text-brand-accent" />,
-      title: "Lane Detection",
-      description: "Hybrid approach using Spatial CNN (SCNN) and CV for robust highway lane keeping."
+      title: "Multi-Lane Detection",
+      description: "YOLOP segmentation and CV fusion for robust multi-lane detection across edge cases."
     },
     {
       icon: <Layers className="w-6 h-6 text-brand-blue" />,
       title: "Object Detection",
-      description: "YOLOv8 & CNN powered detection for vehicles, pedestrians, and signals."
+      description: "YOLOv11 powered detection for vehicles, pedestrians, traffic lights, and signs."
     },
     {
       icon: <Radio className="w-6 h-6 text-green-500" />,
-      title: "Sensor Fusion",
-      description: "Integration of Camera, LiDAR, and Radar for comprehensive environment mapping."
+      title: "Multi-Sensor Fusion",
+      description: "Integration of Camera, LiDAR, Radar, GPS, and IMU for comprehensive perception."
     },
     {
       icon: <Navigation className="w-6 h-6 text-orange-500" />,
-      title: "Autonomous Control",
-      description: "Real-time PID controllers managing steering and ACC with soft-body physics."
+      title: "MPC Control",
+      description: "Model Predictive Control with integrated steering & throttle, plus Emergency Braking."
     },
     {
       icon: <Activity className="w-6 h-6 text-red-500" />,
       title: "Live Telemetry",
-      description: "Real-time visualization and monitoring via Foxglove Studio WebSocket."
+      description: "Real-time visualization and monitoring via Foxglove Studio with LiDAR integration."
     },
     {
       icon: <Cpu className="w-6 h-6 text-indigo-500" />,
       title: "BeamNG Integration",
-      description: "High-fidelity physics simulation testing ground for autonomous algorithms."
+      description: "High-fidelity physics simulation for autonomous algorithm development and testing."
     }
   ];
 
@@ -218,12 +218,12 @@ const Hero: React.FC = () => {
         >
 
           <h1 className="text-4xl md:text-6xl font-display font-bold tracking-tight text-brand-dark mb-6 drop-shadow-sm">
-            VisionPilot: Autonomous Driving & Perception
+            VisionPilot: Multi-Modal Autonomous Driving
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-600 leading-relaxed mb-10 max-w-2xl mx-auto font-light">
-            An open-source modular platform for <br/>
-            <span className="text-brand-accent font-normal">Simulated Autonomous Vehicle Research</span>
+            Advanced perception and <br/>
+            <span className="text-brand-accent font-normal">Model Predictive Control for Autonomous Research</span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
