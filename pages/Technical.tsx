@@ -89,10 +89,6 @@ const Technical: React.FC = () => {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-accent/10 border border-brand-accent/20 mb-4">
-            <Cpu className="w-4 h-4 text-brand-accent" />
-            <span className="text-xs font-bold text-brand-accent uppercase tracking-wider">Architecture & Installation</span>
-          </div>
           <h1 className="text-4xl md:text-5xl font-display font-bold text-brand-dark mb-4">
             System Architecture
           </h1>
