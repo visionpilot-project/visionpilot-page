@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Github, Zap, Radio, Scan, Activity, ChevronDown, Layers, Cpu, Eye, Navigation, Target, Crosshair } from 'lucide-react';
-import { trackEvent } from '../src/utils/analytics';
 
 const Hero: React.FC = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -24,6 +23,55 @@ const Hero: React.FC = () => {
       behavior: 'smooth',
     });
   };
+
+  const [activeSensor, setActiveSensor] = useState(0);
+
+  const sensorSuite = [
+    {
+      id: "camera",
+      name: "Front RGB + Depth Camera",
+      shortName: "Front Camera",
+      specs: "1920 × 1080 @ 50Hz • 70° FOV",
+      domain: "Optical Perception",
+      role: "Lane line segmentation, traffic sign classification, traffic lights, and 2D bounding boxes.",
+      advantage: "Dense semantic richness: reads lane colors, signage text, and vehicle brake lights.",
+      image: `${import.meta.env.BASE_URL}sensors.png`,
+      badgeColor: "text-blue-600 bg-blue-50 border-blue-200"
+    },
+    {
+      id: "lidar",
+      name: "Roof-Mounted 80-Line LiDAR",
+      shortName: "360° LiDAR",
+      specs: "80 Channels • 360° FOV • 120m Range • 20Hz",
+      domain: "Laser Time-of-Flight",
+      role: "High-density 3D spatial geometry and obstacle point clouds for Foxglove Studio.",
+      advantage: "Precise geometric distance measurement unaffected by shadows, ambient glare, or dark tunnels.",
+      image: `${import.meta.env.BASE_URL}lidar.png`,
+      badgeColor: "text-cyan-600 bg-cyan-50 border-cyan-200"
+    },
+    {
+      id: "radar_front",
+      name: "Forward Long-Range Radar",
+      shortName: "Front Radar",
+      specs: "200m Range • 128 × 64 Bins • 50Hz",
+      domain: "Millimeter Wave (Doppler)",
+      role: "Continuous relative velocity estimation and Automatic Emergency Braking (AEB) trigger.",
+      advantage: "Directly calculates vehicle closing speeds and penetrates through thick fog and heavy rain.",
+      image: `${import.meta.env.BASE_URL}radar_front.png`,
+      badgeColor: "text-rose-600 bg-rose-50 border-rose-200"
+    },
+    {
+      id: "radar_rear",
+      name: "Dual Corner Rear Radars",
+      shortName: "Rear Radars",
+      specs: "30m Range (Dual) • 64 × 32 Bins • 50Hz",
+      domain: "Short-Range Radar",
+      role: "Continuous Blind Spot Detection (BSD) and safe lane change execution assistance.",
+      advantage: "Guards vehicle quarter blind zones, detecting overtaking traffic during merges.",
+      image: `${import.meta.env.BASE_URL}radar_rear.png`,
+      badgeColor: "text-emerald-600 bg-emerald-50 border-emerald-200"
+    }
+  ];
 
   const features = [
     {
@@ -228,20 +276,16 @@ const Hero: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
-              onClick={() => {
-                scrollToContent();
-                trackEvent('click', 'Hero', 'Explore System');
-              }}
+              onClick={scrollToContent}
               className="group flex items-center justify-center px-8 py-4 rounded-full bg-brand-accent text-white font-bold text-lg hover:bg-teal-500 transition-colors shadow-lg hover:shadow-xl"
             >
               Explore System
               <ChevronDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform duration-300" />
             </button>
             <a
-              href="https://github.com/Julian1777/self-driving-project"
+              href="https://github.com/visionpilot-project/VisionPilot"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackEvent('click', 'Hero', 'Codebase')}
               className="flex items-center justify-center px-8 py-4 rounded-full bg-white border border-slate-200 text-slate-700 font-semibold text-lg hover:bg-slate-50 hover:border-slate-300 transition-all hover:-translate-y-1 hover:shadow-sm"
             >
               <Github className="mr-2 h-5 w-5" />
@@ -301,278 +345,126 @@ const Hero: React.FC = () => {
         </div>
       </section>
 
-
-            <section className="py-32 px-4 relative bg-white overflow-hidden border-t border-slate-200">
-        {/* Background Grid */}
-        <div className="absolute inset-0 opacity-0">
-        </div>
-
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center relative z-10">
-          
-          {/* Visual Side: Isometric Stack */}
-          <div className="relative h-[500px] flex items-center justify-center perspective-container">
-             <div className="relative w-72 h-72" style={{ transformStyle: 'preserve-3d', transform: 'rotateX(60deg) rotateZ(-45deg)' }}>
-                {/* Layer 1: Raw Camera */}
-                <motion.div 
-                  animate={{ z: [0, 40, 0] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute inset-0 bg-white border border-slate-200 rounded-xl shadow-xl flex items-center justify-center"
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
-                   <div className="text-slate-400 font-mono text-xs transform rotate-90 font-bold tracking-widest">RAW_DATA</div>
-                   {/* Simple Road Graphic */}
-                   <div className="absolute inset-0 opacity-10 bg-gradient-to-b from-transparent via-slate-400 to-slate-600 rounded-xl"></div>
-                </motion.div>
-
-                {/* Layer 2: Lane Segmentation */}
-                <motion.div 
-                  animate={{ z: [80, 160, 80] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute inset-0 bg-blue-50/80 border border-blue-200 rounded-xl shadow-lg backdrop-blur-sm flex items-center justify-center"
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
-                   <div className="absolute inset-0 flex justify-between px-12 py-4">
-                      <div className="w-2 h-full bg-blue-400/30 blur-[2px] rounded-full"></div>
-                      <div className="w-2 h-full bg-blue-400/30 blur-[2px] rounded-full"></div>
-                   </div>
-                   <div className="text-blue-500 font-mono text-xs transform rotate-90 bg-white/80 px-2 border border-blue-200 rounded">SEGMENTATION</div>
-                </motion.div>
-
-                {/* Layer 3: Object Detection */}
-                <motion.div 
-                  animate={{ z: [160, 280, 160] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute inset-0 bg-green-50/80 border border-green-200 rounded-xl shadow-lg backdrop-blur-sm flex items-center justify-center"
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
-                   {/* Bounding Boxes - REMOVED */}
-                   <div className="text-green-600 font-mono text-xs transform rotate-90 bg-white/80 px-2 border border-green-200 rounded">OBJECT_DETECTION</div>
-                </motion.div>
-             </div>
-          </div>
-
-          {/* Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center space-x-2 mb-6 px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/20">
-              <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
-              <span className="text-sm font-bold text-brand-accent uppercase tracking-wider">Sensor Fusion</span>
-            </div>
-            
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-brand-dark mb-6">
-              See the World in <span className="text-transparent bg-clip-text bg-black">Layers</span>
-            </h2>
-            
-            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              True autonomy requires more than just a camera feed. VisionPilot deconstructs the environment into semantic layers—separating road geometry from dynamic obstacles—before fusing them into a unified 3D understanding.
-            </p>
-
-            <div className="space-y-6 mb-10">
-               <div className="flex items-start group">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center border border-blue-100 mt-1 group-hover:bg-blue-100 transition-colors">
-                     <Layers className="w-6 h-6 text-blue-500" />
-                  </div>
-                  <div className="ml-4">
-                     <h4 className="text-brand-dark font-bold text-lg mb-1">Semantic Segmentation</h4>
-                     <p className="text-slate-600 text-sm leading-relaxed">Pixel-level understanding of drivable surfaces and lane markings using Spatial CNN.</p>
-                  </div>
-               </div>
-               
-               <div className="flex items-start group">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center border border-green-100 mt-1 group-hover:bg-green-100 transition-colors">
-                     <Target className="w-6 h-6 text-green-500" />
-                  </div>
-                  <div className="ml-4">
-                     <h4 className="text-brand-dark font-bold text-lg mb-1">Object Detection</h4>
-                     <p className="text-slate-600 text-sm leading-relaxed">Real-time bounding box regression for vehicles, pedestrians, and signals via YOLOv8.</p>
-                  </div>
-               </div>
-            </div>
-
-            <Link
-              to="/technical"
-              onClick={() => trackEvent('click', 'Hero', 'Deep Dive into Architecture')}
-              className="group inline-flex items-center px-8 py-4 rounded-full bg-brand-dark text-white font-bold hover:bg-brand-accent transition-all shadow-lg hover:shadow-brand-accent/20"
-            >
-              Deep Dive into Architecture 
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-
-        </div>
-      </section>
-
       {/* 
         =============================================
-        SECTION 3: SENSOR FUSION (Coverage Map)
+        SECTION 3: MULTI-MODAL SENSOR FUSION
         =============================================
       */}
-      <section className="py-32 px-4 relative bg-white overflow-hidden border-t border-slate-100">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center lg:flex-row-reverse">
-           
-           {/* Visual Side: Sensor Coverage Diagram */}
-           <motion.div
-             initial={{ opacity: 0 }}
-             whileInView={{ opacity: 1 }}
-             viewport={{ once: true }}
-             className="relative h-[500px] lg:order-2 flex items-center justify-center"
-           >
-              <div className="relative w-full h-full max-w-md aspect-square">
-                  {/* Pulsing Background Rings (LiDAR Range) */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.div 
-                        animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.05, 0.1] }}
-                        transition={{ duration: 4, repeat: Infinity }}
-                        className="w-[80%] h-[80%] rounded-full border border-brand-blue/20 bg-brand-blue/5"
-                      />
-                      <motion.div 
-                        animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.05, 0.1] }}
-                        transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-                        className="absolute w-[60%] h-[60%] rounded-full border border-brand-blue/20"
-                      />
-                  </div>
-
-                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
-                      <defs>
-                          <radialGradient id="radarGradient" cx="50%" cy="100%" r="100%">
-                              <stop offset="0%" stopColor="#ef4444" stopOpacity="0.3" />
-                              <stop offset="100%" stopColor="#ef4444" stopOpacity="0" />
-                          </radialGradient>
-                          <linearGradient id="cameraGradient" x1="0" y1="1" x2="0" y2="0">
-                              <stop offset="0%" stopColor="#10b981" stopOpacity="0.3" />
-                              <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
-                          </linearGradient>
-                      </defs>
-
-                      {/* Group centered on Car */}
-                      <g transform="translate(200, 200)">
-                          
-                          {/* LiDAR Rays (Shooting out) */}
-                          <motion.g animate={{ rotate: 360 }} transition={{ duration: 8, repeat: Infinity, ease: "linear" }}>
-                             {[...Array(8)].map((_, i) => (
-                                <line 
-                                  key={i}
-                                  x1="0" y1="0" 
-                                  x2="0" y2="-200" 
-                                  stroke="#3b82f6" 
-                                  strokeWidth="2" 
-                                  strokeOpacity="0.1"
-                                  transform={`rotate(${i * 45})`}
-                                />
-                             ))}
-                          </motion.g>
-
-                          {/* Long Range Radar (Front) - Bigger & Pulsing */}
-                          <motion.path 
-                            d="M -30 -60 L -80 -220 A 100 100 0 0 1 80 -220 L 30 -60 Z" 
-                            fill="url(#radarGradient)"
-                            initial={{ opacity: 0.5 }}
-                            animate={{ opacity: [0.4, 0.7, 0.4], scale: [1, 1.05, 1] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                          />
-                          {/* Radar Waves */}
-                          <motion.path
-                            d="M -15 -100 Q 0 -110 15 -100"
-                            fill="none" stroke="#ef4444" strokeWidth="2" strokeOpacity="0.5"
-                            animate={{ y: [-20, -100], opacity: [1, 0] }}
-                            transition={{ duration: 5, repeat: Infinity }}
-                          />
-                           <motion.path
-                            d="M -25 -100 Q 0 -120 25 -100"
-                            fill="none" stroke="#ef4444" strokeWidth="2" strokeOpacity="0.5"
-                            animate={{ y: [-20, -100], opacity: [1, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
-                          />
-
-                          {/* Camera FOV (Wide Front) - Bigger */}
-                          <motion.path 
-                            d="M 0 -30 L -160 -180 L 160 -180 Z" 
-                            fill="url(#cameraGradient)"
-                            initial={{ opacity: 0.5 }}
-                            animate={{ opacity: [0.3, 0.6, 0.3] }}
-                            transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
-                          />
-
-                          {/* RL */}
-                          <path d="M -30 45 L -100 100 A 50 50 0 0 0 -50 110 L -30 45 Z" fill="#ef4444" fillOpacity="0.1" />
-                          {/* RR */}
-                          <path d="M 30 45 L 100 100 A 50 50 0 0 1 50 110 L 30 45 Z" fill="#ef4444" fillOpacity="0.1" />
-
-                          {/* The Car - Bigger */}
-                          <rect x="-30" y="-52" width="60" height="105" rx="12" fill="#1e293b" stroke="#334155" strokeWidth="3" />
-                          {/* Windshield */}
-                          <path d="M -26 -25 L -26 0 L 26 0 L 26 -25 Q 0 -35 -26 -25" fill="#475569" />
-                          {/* Headlights */}
-                          <path d="M -28 -50 L -15 -50 L -15 -45 L -28 -42 Z" fill="#fbbf24" />
-                          <path d="M 28 -50 L 15 -50 L 15 -45 L 28 -42 Z" fill="#fbbf24" />
-                          
-                          {/* LiDAR Spinner - Center */}
-                          <circle cx="0" cy="0" r="8" fill="#3b82f6" stroke="#fff" strokeWidth="2" />
-                          <motion.g animate={{ rotate: 360 }} transition={{ duration: 6, repeat: Infinity, ease: "linear" }}>
-                              <rect x="-2" y="-12" width="4" height="24" fill="#60a5fa" />
-                              <circle cx="0" cy="-12" r="2" fill="#93c5fd" />
-                          </motion.g>
-
-                      </g>
-                  </svg>
-                  
-                  {/* Legend / Labels */}
-                  <div className="absolute bottom-0 left-0 right-0 flex justify-center space-x-6 text-xs font-bold uppercase tracking-wider">
-                      <div className="flex items-center text-red-500">
-                          <div className="w-3 h-3 bg-red-500/20 border border-red-500 rounded-full mr-2"></div> Radar
-                      </div>
-                      <div className="flex items-center text-brand-blue">
-                          <div className="w-3 h-3 bg-brand-blue/20 border border-brand-blue rounded-full mr-2"></div> LiDAR
-                      </div>
-                      <div className="flex items-center text-emerald-500">
-                          <div className="w-3 h-3 bg-emerald-500/20 border border-emerald-500 rounded-full mr-2"></div> Camera
-                      </div>
-                  </div>
-              </div>
-           </motion.div>
-
-           {/* Text Content */}
-           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:order-1"
-           >
-            <div className="w-12 h-12 bg-brand-blue/10 rounded-xl flex items-center justify-center mb-6">
-              <Radio className="w-6 h-6 text-brand-blue" />
-            </div>
-            
-            <h2 className="text-4xl font-display font-bold text-brand-dark mb-6">
+      <section className="py-28 px-4 relative bg-white overflow-hidden border-t border-slate-100">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs font-bold uppercase tracking-wider text-brand-accent block mb-2 font-mono">
+              Perception Hardware Suite
+            </span>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-dark mb-4">
               Multi-Modal Sensor Fusion
             </h2>
-            
-            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              No single sensor is perfect. VisionPilot employs a "safety through redundancy" architecture, overlapping data from three distinct physical domains to create a fail-safe perception system.
+            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+              No single sensor is completely infallible. VisionPilot fuses inputs across three complementary physical domains:optical vision, laser time-of-flight, and millimeter-wave radar, to construct a reliable perception envelope across changing weather, lighting, and high-speed maneuvers.
             </p>
-            
-            <div className="space-y-8">
-                <div className="relative pl-8 border-l-2 border-slate-200">
-                    <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-brand-blue"></div>
-                    <h4 className="text-brand-dark font-bold text-lg mb-1">LiDAR (Light Detection and Ranging)</h4>
-                    <p className="text-slate-600 text-sm">Provides precise 3D geometry and depth, unaffected by shadows or texture.</p>
-                </div>
-                <div className="relative pl-8 border-l-2 border-slate-200">
-                    <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-red-500"></div>
-                    <h4 className="text-brand-dark font-bold text-lg mb-1">Radar (Radio Detection)</h4>
-                    <p className="text-slate-600 text-sm">Directly measures object velocity (Doppler effect) and works in heavy rain/fog.</p>
-                </div>
-                <div className="relative pl-8 border-l-2 border-slate-200">
-                    <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-emerald-500"></div>
-                    <h4 className="text-brand-dark font-bold text-lg mb-1">Camera (Computer Vision)</h4>
-                    <p className="text-slate-600 text-sm">Essential for semantic understanding: reading signs, lane colors, and brake lights.</p>
-                </div>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-10 items-center">
+            {/* Left: Sensor Selector Cards */}
+            <div className="lg:col-span-5 space-y-3">
+              {sensorSuite.map((sensor, idx) => {
+                const isActive = activeSensor === idx;
+                return (
+                  <button
+                    key={sensor.id}
+                    onClick={() => setActiveSensor(idx)}
+                    onMouseEnter={() => setActiveSensor(idx)}
+                    className={`w-full text-left p-4 sm:p-5 rounded-2xl border transition-all duration-200 flex flex-col justify-between ${
+                      isActive
+                        ? 'bg-slate-50 border-brand-accent shadow-sm'
+                        : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/50'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="font-display font-bold text-base text-brand-dark">
+                        {sensor.name}
+                      </span>
+                      <span className={`text-[11px] font-mono font-semibold px-2 py-0.5 rounded border ${sensor.badgeColor}`}>
+                        {sensor.domain}
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-500 mb-2 leading-relaxed">
+                      {sensor.role}
+                    </p>
+                    <div className="text-[11px] font-mono text-slate-400">
+                      {sensor.specs}
+                    </div>
+                  </button>
+                );
+              })}
             </div>
-          </motion.div>
+
+            {/* Right: Sensor Visualizer */}
+            <div className="lg:col-span-7">
+              <div className="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden flex flex-col">
+                {/* Switcher Tab Strip */}
+                <div className="flex items-center gap-1.5 p-3 bg-slate-50 border-b border-slate-200 overflow-x-auto">
+                  {sensorSuite.map((sensor, idx) => (
+                    <button
+                      key={sensor.id}
+                      onClick={() => setActiveSensor(idx)}
+                      className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                        activeSensor === idx
+                          ? 'bg-brand-dark text-white shadow-sm'
+                          : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                      }`}
+                    >
+                      {sensor.shortName}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Sensor Visual Image Screen */}
+                <div className="relative aspect-[16/10] bg-slate-900 overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={activeSensor}
+                      src={sensorSuite[activeSensor].image}
+                      alt={sensorSuite[activeSensor].name}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="w-full h-full object-cover"
+                    />
+                  </AnimatePresence>
+
+                  <div className="absolute top-4 left-4 bg-brand-dark/85 backdrop-blur text-white text-xs font-mono px-3 py-1 rounded-lg border border-white/10">
+                    BeamNG.tech Simulated Hardware
+                  </div>
+
+                  <div className="absolute bottom-4 left-4 right-4 bg-brand-dark/90 backdrop-blur-md text-white p-4 rounded-2xl border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                    <div>
+                      <span className="text-slate-400 block text-[10px] uppercase font-mono tracking-wider">Advantage</span>
+                      <span className="text-slate-200 leading-snug">{sensorSuite[activeSensor].advantage}</span>
+                    </div>
+                    <div className="shrink-0 font-mono text-[11px] text-brand-accent bg-white/10 px-2.5 py-1 rounded-md text-center">
+                      {sensorSuite[activeSensor].specs.split('•')[0].trim()}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Footer Link */}
+                <div className="p-4 bg-white border-t border-slate-100 flex items-center justify-between text-xs">
+                  <span className="text-slate-500">
+                    Configurable parameters available in <code className="font-mono text-brand-dark bg-slate-100 px-1.5 py-0.5 rounded">config/sensors.yaml</code>
+                  </span>
+                  <Link
+                    to="/technical"
+                    className="font-bold text-brand-accent hover:text-brand-dark transition-colors inline-flex items-center gap-1"
+                  >
+                    View All Sensor Specs <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -606,7 +498,6 @@ const Hero: React.FC = () => {
                       <div className="flex flex-col sm:flex-row gap-4">
                         <Link
                           to="/demos"
-                          onClick={() => trackEvent('click', 'Hero', 'Watch Simulation Demos')}
                           className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-dark text-white font-bold hover:bg-brand-accent transition-all shadow-lg hover:shadow-brand-accent/20"
                         >
                           Watch Simulation Demos <Zap className="ml-2 w-4 h-4" />

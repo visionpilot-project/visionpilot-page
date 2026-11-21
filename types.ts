@@ -4,23 +4,30 @@ export interface FeatureItem {
   icon: string;
 }
 
+export interface RoadmapTask {
+  text: string;
+  status: 'completed' | 'in-progress' | 'planned' | 'on-hold';
+  tag?: string;
+  note?: string;
+}
+
 export interface RoadmapItem {
   category: string;
-  items: {
-    text: string;
-    status: 'completed' | 'in-progress' | 'planned' | 'low-priority';
-  }[];
+  description?: string;
+  items: RoadmapTask[];
 }
 
 export interface DatasetData {
   name: string;
   size: number;
-  type: string;
+  color?: string;
 }
 
 export interface ModelInfo {
   name: string;
   type: string;
-  useCase: string;
   framework: string;
+  status: string;
+  weightsFile?: string;
+  accuracy?: string;
 }

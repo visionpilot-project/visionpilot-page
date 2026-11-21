@@ -9,7 +9,6 @@ import Demos from './pages/Demos';
 import Models from './pages/Models';
 import Roadmap from './pages/Roadmap';
 import About from './pages/About';
-import Contact from './pages/Contact';
 import { AnimatePresence } from 'framer-motion';
 
 const App: React.FC = () => {
@@ -28,7 +27,6 @@ const App: React.FC = () => {
             <Route path="/models" element={<Models />} />
             <Route path="/roadmap" element={<Roadmap />} />
             <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
           </Routes>
         </AnimatePresence>
       </div>
