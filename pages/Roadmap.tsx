@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Circle, Clock, Flame, PauseCircle, Compass, Zap, Cpu, HelpCircle, GitPullRequest } from 'lucide-react';
+import { CheckCircle2, Circle, Clock, Flame, PauseCircle, Zap, Cpu, HelpCircle, GitPullRequest } from 'lucide-react';
 import { RoadmapItem } from '../types';
 
 const Roadmap: React.FC = () => {
@@ -167,10 +167,6 @@ const Roadmap: React.FC = () => {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-accent/10 border border-brand-accent/20 mb-4">
-            <Compass className="w-4 h-4 text-brand-accent" />
-            <span className="text-xs font-bold text-brand-accent uppercase tracking-wider">VisionPilot Roadmap</span>
-          </div>
           <h1 className="text-4xl md:text-5xl font-display font-bold text-brand-dark mb-4">
             Development Milestones
           </h1>
