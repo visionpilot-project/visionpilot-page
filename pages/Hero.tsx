@@ -29,11 +29,11 @@ const Hero: React.FC = () => {
   const sensorSuite = [
     {
       id: "camera",
-      name: "Front RGB + Depth Camera",
+      name: "Front RGB",
       shortName: "Front Camera",
-      specs: "1920 × 1080 @ 50Hz • 70° FOV",
+      specs: "1920 × 1080",
       domain: "Optical Perception",
-      role: "Lane line segmentation, traffic sign classification, traffic lights, and 2D bounding boxes.",
+      role: "Anything to do with vision: lane detection, object detection, traffic light recognition, and sign reading.",
       advantage: "Dense semantic richness: reads lane colors, signage text, and vehicle brake lights.",
       image: `${import.meta.env.BASE_URL}sensors.png`,
       badgeColor: "text-blue-600 bg-blue-50 border-blue-200"
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
       id: "lidar",
       name: "Roof-Mounted 80-Line LiDAR",
       shortName: "360° LiDAR",
-      specs: "80 Channels • 360° FOV • 120m Range • 20Hz",
+      specs: "80 Channels",
       domain: "Laser Time-of-Flight",
       role: "High-density 3D spatial geometry and obstacle point clouds for Foxglove Studio.",
       advantage: "Precise geometric distance measurement unaffected by shadows, ambient glare, or dark tunnels.",
@@ -53,7 +53,7 @@ const Hero: React.FC = () => {
       id: "radar_front",
       name: "Forward Long-Range Radar",
       shortName: "Front Radar",
-      specs: "200m Range • 128 × 64 Bins • 50Hz",
+      specs: "128 × 64 Bins",
       domain: "Millimeter Wave (Doppler)",
       role: "Continuous relative velocity estimation and Automatic Emergency Braking (AEB) trigger.",
       advantage: "Directly calculates vehicle closing speeds and penetrates through thick fog and heavy rain.",
@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
       id: "radar_rear",
       name: "Dual Corner Rear Radars",
       shortName: "Rear Radars",
-      specs: "30m Range (Dual) • 64 × 32 Bins • 50Hz",
+      specs: "30m Range (Dual) • 64 × 32 Bins",
       domain: "Short-Range Radar",
       role: "Continuous Blind Spot Detection (BSD) and safe lane change execution assistance.",
       advantage: "Guards vehicle quarter blind zones, detecting overtaking traffic during merges.",
@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
     {
       icon: <Eye className="w-6 h-6 text-brand-accent" />,
       title: "Multi-Lane Detection",
-      description: "YOLOP segmentation and CV fusion for robust multi-lane detection across edge cases."
+      description: "Ultra-Fast Lane Detection (UFLD) and CV fusion for robust multi-lane detection across edge cases."
     },
     {
       icon: <Layers className="w-6 h-6 text-brand-blue" />,

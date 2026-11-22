@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
               <li><Link to="/technical" className="hover:text-brand-accent transition-colors">Architecture & Installation</Link></li>
               <li><Link to="/demos" className="hover:text-brand-accent transition-colors">Simulation Demos</Link></li>
               <li><Link to="/models" className="hover:text-brand-accent transition-colors">Models & Datasets</Link></li>
-              <li><Link to="/roadmap" className="hover:text-brand-accent transition-colors">Roadmap (MPC Focus)</Link></li>
+              <li><Link to="/roadmap" className="hover:text-brand-accent transition-colors">Roadmap</Link></li>
               <li><Link to="/about" className="hover:text-brand-accent transition-colors">About & Citation</Link></li>
             </ul>
           </div>
@@ -69,16 +69,6 @@ const Footer: React.FC = () => {
                   className="hover:text-brand-accent transition-colors"
                 >
                   Engineering Journal (Google Drive)
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/visionpilot-project/VisionPilot#readme"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-brand-accent transition-colors"
-                >
-                  GitHub Documentation
                 </a>
               </li>
               <li>

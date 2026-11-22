@@ -151,9 +151,6 @@ const Demos: React.FC = () => {
                 FULL STACK COMPOSITE
               </span>
             </div>
-            <div className="absolute bottom-4 right-4 bg-brand-dark/90 text-white text-xs font-mono px-3 py-1.5 rounded-lg border border-white/10 backdrop-blur">
-              Multi-Model In-Process Pipeline
-            </div>
           </div>
           <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-center">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">
